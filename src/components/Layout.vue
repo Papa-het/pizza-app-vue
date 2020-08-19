@@ -19,7 +19,9 @@ h2,
 h3,
 h4,
 a,
-p {
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }

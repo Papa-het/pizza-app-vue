@@ -1,0 +1,2 @@
+// COMMON - GETTERS
+export const GET_TABLIST = 'GET_TABLIST';

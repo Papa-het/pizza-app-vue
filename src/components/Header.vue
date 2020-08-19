@@ -25,9 +25,13 @@ export default Vue.extend({
   justify-content: space-between;
 
   &-main {
+    background: url('/images/logo.svg') no-repeat;
+    background-position: 0 50%;
+    padding-left: 50px;
     h1 {
       text-align: left;
       color: #181818;
+      font-weight: bold;
     }
   }
 }
