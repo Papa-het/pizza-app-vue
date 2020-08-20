@@ -51,6 +51,7 @@ export default Vue.extend({
       padding: 10px 20px;
       color: #2c2c2c;
       font-weight: bold;
+      user-select: none;
 
       &:hover {
         cursor: pointer;
