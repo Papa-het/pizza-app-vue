@@ -38,7 +38,7 @@ export default Vue.extend({
     h1 {
       text-align: left;
       color: #181818;
-      font-weight: bold;
+      font-weight: 900;
     }
   }
 
