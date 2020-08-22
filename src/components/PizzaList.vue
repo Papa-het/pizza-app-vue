@@ -9,6 +9,14 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'PizzaList',
+  methods: {
+    fetchData() {
+      return this.$store.dispatch('pizzaList/FETCH_PIZZALIST');
+    },
+  },
+  mounted() {
+    this.fetchData();
+  },
 });
 </script>
 

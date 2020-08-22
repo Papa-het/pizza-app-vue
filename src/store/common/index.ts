@@ -1,4 +1,4 @@
-import { GET_TABLIST } from '../types';
+import { GET_TABLIST } from '../constants';
 
 const state = {
   tabList: [
