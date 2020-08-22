@@ -43,6 +43,8 @@ export default Vue.extend({
   &-list {
     display: flex;
     list-style: none;
+    width: 70%;
+    overflow-x: scroll;
 
     &--item {
       margin-right: 20px;

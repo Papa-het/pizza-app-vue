@@ -1,20 +1,33 @@
 <template>
   <section class="pizzaList">
     <h1 class="pizzaList-title">Все пиццы</h1>
+
+    <ul class="pizzaList-list">
+      <PizzaCard v-for="pizza in pizzaList" :key="pizza.id" :pizza="pizza" />
+    </ul>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import PizzaCard from './PizzaCard.vue';
+
+import { Pizza } from '@/types';
 
 export default Vue.extend({
   name: 'PizzaList',
+  components: { PizzaCard },
+  computed: {
+    pizzaList(): Pizza[] {
+      return this.$store.getters['pizzaList/GET_PIZZALIST'];
+    },
+  },
   methods: {
     fetchData() {
       return this.$store.dispatch('pizzaList/FETCH_PIZZALIST');
     },
   },
-  mounted() {
+  beforeMount() {
     this.fetchData();
   },
 });
@@ -25,10 +38,14 @@ export default Vue.extend({
   padding-top: 32px;
 
   &-title {
-    float: left;
     font-size: 32px;
     color: #000000;
     padding-bottom: 35px;
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
   }
 }
 </style>

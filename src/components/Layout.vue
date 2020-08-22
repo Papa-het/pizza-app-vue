@@ -24,6 +24,7 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  text-align: initial;
 }
 
 body {
