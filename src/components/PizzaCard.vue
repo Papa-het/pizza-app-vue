@@ -1,5 +1,7 @@
 <template>
-  <li class="pizzaCard">{{ pizza.name }}</li>
+  <li class="pizzaCard">
+    <img class="pizzaCard-img" :src="pizza.imageUrl" alt="" />
+  </li>
 </template>
 
 <script lang="ts">
@@ -19,5 +21,11 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .pizzaCard {
+  width: 100%;
+  height: auto;
+
+  &-img {
+    height: 195px;
+  }
 }
 </style>

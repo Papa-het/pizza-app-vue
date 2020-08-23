@@ -45,7 +45,12 @@ export default Vue.extend({
 
   &-list {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-auto-flow: row;
+    grid-gap: 30px;
+    grid-template: auto / 1fr 1fr 1fr 1fr;
+    align-items: stretch;
+    justify-items: stretch;
+    list-style: none;
   }
 }
 </style>
