@@ -3,13 +3,32 @@
     <img class="pizzaCard-img" :src="pizza.imageUrl" alt="" />
     <div class="pizzaCard-controls">
       <div class="pizzaCard-controls--line">
-        <div class="pizzaCard-controls--item">тонкое</div>
-        <div class="pizzaCard-controls--item">традиционное</div>
+        <div
+          :class="
+            `pizzaCard-controls--item${
+              active.type === item.value ? ' active' : ''
+            }`
+          "
+          v-for="item in topList"
+          :key="item.label"
+          @click="setActive(item.value, true)"
+        >
+          {{ item.label }}
+        </div>
       </div>
       <div class="pizzaCard-controls--line">
-        <div class="pizzaCard-controls--item">26 см.</div>
-        <div class="pizzaCard-controls--item">30 см.</div>
-        <div class="pizzaCard-controls--item">40 см.</div>
+        <div
+          :class="
+            `pizzaCard-controls--item${
+              active.size === item.value ? ' active' : ''
+            }`
+          "
+          v-for="item in bottomList"
+          :key="item.label"
+          @click="setActive(item.value)"
+        >
+          {{ item.label }}
+        </div>
       </div>
     </div>
   </li>
@@ -25,6 +44,44 @@ export default Vue.extend({
     pizza: {
       type: Object as PropType<Pizza>,
       required: true,
+    },
+  },
+  data() {
+    return {
+      active: {
+        type: 0,
+        size: 0,
+      },
+      topList: [
+        {
+          label: 'тонкое',
+          value: 0,
+        },
+        {
+          label: 'традиционное',
+          value: 1,
+        },
+      ],
+      bottomList: [
+        {
+          label: '26 см.',
+          value: 0,
+        },
+        {
+          label: '30 см.',
+          value: 1,
+        },
+        {
+          label: '40 см.',
+          value: 2,
+        },
+      ],
+    };
+  },
+  methods: {
+    setActive(value: number, isTop = false) {
+      if (isTop) return (this.active.type = value);
+      return (this.active.size = value);
     },
   },
 });
@@ -72,6 +129,12 @@ export default Vue.extend({
       &.active {
         background: #ffffff;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        opacity: 1;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: #ffffff;
         opacity: 1;
       }
     }
