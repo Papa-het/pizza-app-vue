@@ -1,6 +1,6 @@
-import { GET_TABLIST } from '../constants';
+import { GET_TABLIST, SET_ACTIVE_TAB, GET_ACTIVE_TAB } from '../constants';
 
-const state = {
+const state: State = {
   tabList: [
     {
       label: 'Все',
@@ -27,17 +27,30 @@ const state = {
       value: 5,
     },
   ],
+  activeTab: 0,
 };
 
 const getters = {
   [GET_TABLIST]() {
     return state.tabList;
   },
+  [GET_ACTIVE_TAB]() {
+    return state.activeTab;
+  },
 };
 
 const actions = {};
 
-const mutations = {};
+const mutations = {
+  [SET_ACTIVE_TAB](state: State, payload: number ) {
+    state.activeTab = payload;
+  },
+};
+
+interface State {
+  tabList: { value: number; label: string }[];
+  activeTab: number;
+}
 
 export default {
   namespaced: true,

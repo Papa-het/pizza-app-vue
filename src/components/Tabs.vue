@@ -20,7 +20,7 @@ export default Vue.extend({
   name: 'Tabs',
   data() {
     return {
-      active: 0,
+      active: this.$store.getters['common/GET_ACTIVE_TAB'],
     };
   },
   computed: {
@@ -31,6 +31,7 @@ export default Vue.extend({
   methods: {
     setActive(i: number) {
       this.active = i;
+      this.$store.commit('common/SET_ACTIVE_TAB', i);
     },
   },
 });
