@@ -42,7 +42,7 @@ const getters = {
 const actions = {};
 
 const mutations = {
-  [SET_ACTIVE_TAB](state: State, payload: number ) {
+  [SET_ACTIVE_TAB](state: State, payload: number) {
     state.activeTab = payload;
   },
 };
