@@ -1,6 +1,7 @@
 <template>
   <li class="pizzaCard">
     <img class="pizzaCard-img" :src="pizza.imageUrl" alt="" />
+    <h3 class="pizzaCard-name">{{ pizza.name }}</h3>
     <div class="pizzaCard-controls">
       <div class="pizzaCard-controls--line">
         <div
@@ -138,6 +139,16 @@ export default Vue.extend({
         opacity: 1;
       }
     }
+  }
+
+  &-name {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #000000;
+    margin: 20px 0;
   }
 }
 </style>

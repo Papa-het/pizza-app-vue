@@ -19,7 +19,10 @@ export default Vue.extend({
   components: { PizzaCard },
   computed: {
     pizzaList(): Pizza[] {
-      return this.$store.getters['pizzaList/GET_PIZZALIST'];
+      const list = this.$store.getters['pizzaList/GET_PIZZALIST'];
+      const type = this.$store.getters['common/GET_ACTIVE_TAB'];
+      const filtered = list.filter((el: Pizza) => el.types.includes(type));
+      return filtered;
     },
   },
   methods: {
