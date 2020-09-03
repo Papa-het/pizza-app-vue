@@ -2,11 +2,11 @@
   <li class="pizzaCard">
     <img class="pizzaCard-img" :src="pizza.imageUrl" alt="" />
     <h3 class="pizzaCard-name">{{ pizza.name }}</h3>
-    <div class="pizzaCard-controls">
-      <div class="pizzaCard-controls--line">
+    <div class="pizzaCard-types">
+      <div class="pizzaCard-types--line">
         <div
           :class="
-            `pizzaCard-controls--item${
+            `pizzaCard-types--item${
               active.type === item.value ? ' active' : ''
             }`
           "
@@ -17,10 +17,10 @@
           {{ item.label }}
         </div>
       </div>
-      <div class="pizzaCard-controls--line">
+      <div class="pizzaCard-types--line">
         <div
           :class="
-            `pizzaCard-controls--item${
+            `pizzaCard-types--item${
               active.size === item.value ? ' active' : ''
             }`
           "
@@ -31,6 +31,13 @@
           {{ item.label }}
         </div>
       </div>
+    </div>
+    <div class="pizzaCard-controls">
+      <h2 class="pizzaCard-controls--price">от {{ pizza.price }} ₸</h2>
+      <button class="pizzaCard-controls--add" @click="addPizza">
+        Добавить
+        <span>{{ count }}</span>
+      </button>
     </div>
   </li>
 </template>
@@ -77,12 +84,16 @@ export default Vue.extend({
           value: 2,
         },
       ],
+      count: 0,
     };
   },
   methods: {
     setActive(value: number, isTop = false) {
       if (isTop) return (this.active.type = value);
       return (this.active.size = value);
+    },
+    addPizza() {
+      return (this.count = this.count + 1);
     },
   },
 });
@@ -100,7 +111,7 @@ export default Vue.extend({
     object-fit: contain;
   }
 
-  &-controls {
+  &-types {
     background: #f3f3f3;
     border-radius: 10px;
     padding: 8px;
@@ -137,6 +148,43 @@ export default Vue.extend({
         cursor: pointer;
         background: #ffffff;
         opacity: 1;
+      }
+    }
+  }
+
+  &-controls {
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--price {
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 27px;
+      letter-spacing: 0.015em;
+    }
+
+    &--add {
+      padding: 10px 30px;
+
+      background: #ffffff;
+      border: 1px solid #eb5a1e;
+      box-sizing: border-box;
+      border-radius: 30px;
+
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 19px;
+
+      color: #eb5a1e;
+      outline: none;
+
+      &:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background: #eb5a1e;
       }
     }
   }

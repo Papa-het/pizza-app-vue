@@ -49,7 +49,7 @@ export default Vue.extend({
   &-list {
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 30px;
+    grid-gap: 50px;
     grid-template: auto / 1fr 1fr 1fr 1fr;
     align-items: stretch;
     justify-items: stretch;
